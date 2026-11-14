@@ -104,6 +104,8 @@ h2{font:800 clamp(38px,6vw,72px)/.95 var(--display);font-stretch:112%;letter-spa
 .card .more{font:600 13px var(--body);color:var(--band-fg);background:none;border:0;padding:6px 0;cursor:pointer}
 .card .doc{display:inline-flex;align-items:center;gap:6px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:6px 12px}
 .card .doc:hover{background:var(--band-fg);color:var(--band)}
+.card .doc.live{border-color:#22C55E;color:#86EFAC}
+.card .doc.live:hover{background:#22C55E;color:#0B0C0E}
 .docbtn{align-self:start;font:600 14px var(--body);text-decoration:none;background:var(--fg);color:var(--bg);padding:11px 18px;border-radius:10px;margin-top:4px}
 .soft{margin-top:24px}
 .soft ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
@@ -230,7 +232,7 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
 .logic caption{caption-side:bottom;text-align:left;padding:8px 10px;color:var(--muted);font-size:12px}
 .close{position:absolute;top:12px;right:12px;z-index:2;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font:600 13px var(--body);cursor:pointer}
 #lb{background:transparent;width:auto;max-width:94vw;overflow:visible}
-#lb img{max-height:86vh;width:auto;border-radius:12px;margin:auto}
+#lb img{width:min(92vw,1200px);height:min(84vh,900px);object-fit:contain;border-radius:12px;margin:auto}
 #lb p{color:#fff;text-align:center;font:500 13px var(--mono);margin:12px 0 0}
 #lb .close{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
 
@@ -300,7 +302,7 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
   <section class="dark" id="work">
     <div class="wrap">
       <div class="shead">
-        <div><div class="label">Selected projects · 5</div><h2 class="caret">Work Gallery</h2></div>
+        <div><div class="label">Selected projects · 7</div><h2 class="caret">Work Gallery</h2></div>
         <div class="controls"><button type="button" id="prev" aria-label="Previous project">←</button><button type="button" id="next" aria-label="Next project">→</button></div>
       </div>
       <div class="filters" role="group" aria-label="Filter projects">
@@ -410,7 +412,7 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
 
   <section id="awards">
     <div class="wrap">
-      <div class="shead"><div><div class="label">Certificates · 11</div><h2>Recognition</h2></div><p>Grouped by role. Tap a certificate to see it full size.</p></div>
+      <div class="shead"><div><div class="label">Certificates · 14</div><h2>Recognition</h2></div><p>Grouped by role. Tap a certificate to see it full size.</p></div>
       <div id="awards-grid"></div>
     </div>
   </section>
@@ -464,6 +466,19 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
 
 <script>
 const P=[
+ {k:'hw sw',kind:'IoT · Hardware + Web',title:'Smart Greenhouse Control Center',meta:'IoT project · Team of 5 · Live at greenhouseproject.me',cover:'img/gh-2.jpg',live:'https://greenhouseproject.me',
+  pics:['img/gh-2.jpg','img/gh-1.jpg'],
+  sum:'An IoT greenhouse you can monitor and control from a live web dashboard.',
+  desc:'A clear acrylic greenhouse with sensors and relays, connected to a cloud dashboard at greenhouseproject.me. It reads the growing conditions in real time and switches the fans, water pump and grow light by itself or on command.',
+  pts:['Monitors air temperature, humidity, two soil-moisture zones, water reservoir level and light intensity','Ventilation fans turn on automatically above 30 °C, the water pump below 40% soil moisture, and the grow light below 500 lux','Every device can be set to Off, On or Automatic from the dashboard, with trends and an activity log'],
+  team:'Duane Joseph R. Banate, Marc Kenneth A. Alita, Shelby Lyle Pautan, Justine B. Juyad, Jay Lord Diacor',
+  tags:['IoT','Sensors','Relays','Web dashboard','Cloud']},
+ {k:'hw',title:'16-Stage Johnson Ring-Counter LED Chaser',meta:'CPEP 311A · Final Project · BSCpE 3 · Solo',cover:'img/led-2.jpg',doc:'docs/johnson.pdf',
+  pics:['img/led-2.jpg','img/led-1.jpg'],
+  sum:'A 16-LED running light built only from logic chips, with a step counter and a tone sequencer.',
+  desc:'A running-light display controlled entirely by TTL logic ICs and 555 timers, with no Arduino or microcontroller. Four 74LS194 shift registers form a 16-stage register, and a 74LS04 inverter feeds the last stage back to the first to make a Johnson counter: the LEDs fill up one by one, then empty, for 32 states.',
+  pts:['NE555 clock with a potentiometer for speed (about 0.65 to 6.9 steps per second)','AUTO or MANUAL stepping selected by a 74LS00 NAND circuit, plus HOLD and RESET controls','RING/JOHN switch shows the difference between a ring counter and a Johnson counter','74LS161 shows the step number in binary, and a third NE555 plays a tone that changes pitch as the lights move','Built on four 830-point breadboards, powered by a 5 V phone charger'],
+  tags:['74LS194','NE555','74LS04','74LS00','74LS161','Johnson counter']},
  {k:'hw',title:'Infrared-Controlled Automatic Door',meta:'CPEP 311A · Midterm · BSCpE 3 · Solo',cover:'img/door-1.jpg',doc:'docs/door.pdf',
   pics:['img/door-1.jpg','img/door-2.jpg','img/door-3.jpg'],
   sum:'An automatic door built only from discrete parts, with no microcontroller.',
@@ -501,13 +516,13 @@ const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&qu
 const track=document.getElementById('track');
 track.innerHTML=P.map((p,i)=>`<article class="card" data-k="${p.k}" data-i="${i}">
   <div class="shot"><img src="${p.cover}" alt="${esc(p.title)}"></div>
-  <div class="info"><div class="kind"><span>${p.k==='hw'?'Hardware':'Software'}</span><span>0${i+1}</span></div>
+  <div class="info"><div class="kind"><span>${p.kind||(p.k==='hw'?'Hardware':'Software')}</span><span>0${i+1}</span></div>
   <h3>${esc(p.title)}</h3><p>${esc(p.sum)}</p>
   <div class="tags">${p.tags.slice(0,3).map(t=>`<span>${esc(t)}</span>`).join('')}</div>
   <div class="actions"><button type="button" class="more" data-open="${i}">View project →</button>
-  <a class="doc" href="${p.doc}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Docs</a></div></div></article>`).join('');
+  ${p.live?`<a class="doc live" href="${p.live}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Live site</a>`:`<a class="doc" href="${p.doc}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Docs</a>`}</div></div></article>`).join('');
 const fb=document.querySelectorAll('.filters button');
-fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.setAttribute('aria-pressed',x===b));track.querySelectorAll('.card').forEach(c=>c.hidden=!(b.dataset.f==='all'||c.dataset.k===b.dataset.f));track.scrollTo({left:0})});
+fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.setAttribute('aria-pressed',x===b));track.querySelectorAll('.card').forEach(c=>c.hidden=!(b.dataset.f==='all'||c.dataset.k.split(' ').includes(b.dataset.f)));track.scrollTo({left:0})});
 document.getElementById('prev').onclick=()=>track.scrollBy({left:-420,behavior:'smooth'});
 document.getElementById('next').onclick=()=>track.scrollBy({left:420,behavior:'smooth'});
 
@@ -517,7 +532,7 @@ track.addEventListener('click',e=>{if(e.target.closest('a'))return;const c=e.tar
   pb.innerHTML=`<div class="pics">${p.pics.map(s=>`<img src="${s}" alt="${esc(p.title)} photo" data-src="${s}" data-cap="${esc(p.title)}">`).join('')}</div>
   <div class="txt"><div class="meta">${esc(p.meta)}</div><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
   <ul>${p.pts.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>${p.logic?logic:''}
-  ${p.team?`<p><b>Team:</b> ${esc(p.team)}</p>`:''}<div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><a class="docbtn" href="${p.doc}" target="_blank" rel="noopener">Open documentation (PDF) ↗</a></div>`;
+  ${p.team?`<p><b>Team:</b> ${esc(p.team)}</p>`:''}<div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>${p.live?`<a class="docbtn" href="${p.live}" target="_blank" rel="noopener">Open greenhouseproject.me ↗</a>`:`<a class="docbtn" href="${p.doc}" target="_blank" rel="noopener">Open documentation (PDF) ↗</a>`}</div>`;
   pd.showModal();});
 
 const G=[
@@ -525,10 +540,13 @@ const G=[
   {big:0,src:'img/cert-speaker.jpg',date:'Sep 29, 2026',t:'Think. Prompt. Automate: The Future of AI Workflows',s:'Resource Speaker · UBCOMPESA · UB IMC',badge:'Resource Speaker'},
   {src:'img/cert-appdev.jpg',date:'Jan 30, 2026',t:'Basic Introduction to App Development: Web, Laravel and Android Studio',s:'Speaker · COMPESA · UB IMC · “Build it. Style it. Launch it.”',badge:'Speaker'}]},
  {name:'Seminars & trainings',cls:'two',items:[
+  {src:'img/cert-metawatt.jpg',date:'Nov 9, 2026',t:'METAWATT Student Orientation and Exploratory Session',s:'AI, AI development and automation · COMPESA · UB IRC'},
   {src:'img/cert-webinar.jpg',date:'May 2, 2026',t:'Low-Level Control: Programming Arduino Using Assembly',s:'Webinar · COMPESA'},
-  {src:'img/cert-sumoworkshop.jpg',date:'Mar 29, 2025',t:'Sumobot Workshop: Code, Create, Compete',s:'Seminar · COMPESA · UB IMC'}]},
- {name:'Attendance Committee',cls:'',items:[
+  {src:'img/cert-sumoworkshop.jpg',date:'Mar 29, 2025',t:'Sumobot Workshop: Code, Create, Compete',s:'Seminar · COMPESA · UB IMC'},
+  {src:'img/cert-pcb.jpg',date:'Feb 22, 2025',t:'PCB Design Seminar Workshop',s:'Seminar · COMPESA · UB IRC'}]},
+ {name:'Attendance Committee',cls:'two',items:[
   {src:'img/cert-pagagak.jpg',date:'Sep 2, 2026',t:'Guidance Celebration: PAG-AGAK',s:'EVLAUNCH Attendance System · UBSSG'},
+  {src:'img/cert-himamat.jpg',date:'Aug 20, 2026',t:'HIMAMAT 2026',s:'EVLAUNCH Attendance System · UBSSG · VBT Jr. Sports Complex'},
   {src:'img/cert-timbaya.jpg',date:'Aug 8, 2026',t:'Timbaya Festival: Welcome Week',s:'Managed and monitored attendance · UBSSG'},
   {src:'img/cert-teachers.jpg',date:'Oct 3, 2025',t:'Teachers Day 2025 Celebration',s:'Attendance Committee · UBSSG · UB Quadrangle'}]},
  {name:'Competitions & events',cls:'two',items:[
