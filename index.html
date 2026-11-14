@@ -422,7 +422,7 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
       <div class="shead"><div><div class="label">Apparel design</div><h2>Shirts &amp; jerseys</h2></div><p>Made for the Rosarian Youth Organization of Sitio Dobdob, Maribojoc.</p></div>
       <div class="designs">
         <button type="button" class="design" data-src="img/shirt-dobdob.jpg" data-cap="D'Rosarians organization shirt, front and back"><img src="img/shirt-dobdob.jpg" alt="Sky-blue Rosarian Youth Organization shirt, front and back"><div class="t"><h3>D'Rosarians Org Shirt</h3><p>Sky-blue tee with a circular seal on the front and the RYO mark on the back.</p></div></button>
-        <button type="button" class="design" data-src="img/shirt-jersey.jpg" data-cap="Rosarian jersey set, sleeved and sleeveless"><img src="img/shirt-jersey.jpg" alt="Navy and blue Rosarian sports jersey, sleeved and sleeveless"><div class="t"><h3>Rosarian Jersey Set</h3><p>“One Faith. One Family.” Navy sublimation jersey with name and number.</p></div></button>
+        <button type="button" class="design" data-src="shirt-jersey.jpg" data-cap="Rosarian jersey set, sleeved and sleeveless"><img src="shirt-jersey.jpg" alt="Navy and blue Rosarian sports jersey, sleeved and sleeveless"><div class="t"><h3>Rosarian Jersey Set</h3><p>“One Faith. One Family.” Navy sublimation jersey with name and number.</p></div></button>
       </div>
     </div>
   </section>
@@ -466,15 +466,15 @@ dialog::backdrop{background:rgba(8,9,11,.82);backdrop-filter:blur(4px)}
 
 <script>
 const P=[
- {k:'hw sw',kind:'IoT · Hardware + Web',title:'Smart Greenhouse Control Center',meta:'IoT project · Team of 5 · Live at greenhouseproject.me',cover:'img/gh-2.jpg',live:'https://greenhouseproject.me',
-  pics:['img/gh-2.jpg','img/gh-1.jpg'],
+ {k:'hw sw',kind:'IoT · Hardware + Web',title:'Smart Greenhouse Control Center',meta:'IoT project · Team of 5 · Live at greenhouseproject.me',cover:'gh-2.jpg',live:'https://greenhouseproject.me',
+  pics:['gh-2.jpg','gh-1.jpg'],
   sum:'An IoT greenhouse you can monitor and control from a live web dashboard.',
   desc:'A clear acrylic greenhouse with sensors and relays, connected to a cloud dashboard at greenhouseproject.me. It reads the growing conditions in real time and switches the fans, water pump and grow light by itself or on command.',
   pts:['Monitors air temperature, humidity, two soil-moisture zones, water reservoir level and light intensity','Ventilation fans turn on automatically above 30 °C, the water pump below 40% soil moisture, and the grow light below 500 lux','Every device can be set to Off, On or Automatic from the dashboard, with trends and an activity log'],
   team:'Duane Joseph R. Banate, Marc Kenneth A. Alita, Shelby Lyle Pautan, Justine B. Juyad, Jay Lord Diacor',
   tags:['IoT','Sensors','Relays','Web dashboard','Cloud']},
- {k:'hw',title:'16-Stage Johnson Ring-Counter LED Chaser',meta:'CPEP 311A · Final Project · BSCpE 3 · Solo',cover:'img/led-2.jpg',doc:'docs/johnson.pdf',
-  pics:['img/led-2.jpg','img/led-1.jpg'],
+ {k:'hw',title:'16-Stage Johnson Ring-Counter LED Chaser',meta:'CPEP 311A · Final Project · BSCpE 3 · Solo',cover:'led-2.jpg',doc:'johnson.pdf',
+  pics:['led-2.jpg','led-1.jpg'],
   sum:'A 16-LED running light built only from logic chips, with a step counter and a tone sequencer.',
   desc:'A running-light display controlled entirely by TTL logic ICs and 555 timers, with no Arduino or microcontroller. Four 74LS194 shift registers form a 16-stage register, and a 74LS04 inverter feeds the last stage back to the first to make a Johnson counter: the LEDs fill up one by one, then empty, for 32 states.',
   pts:['NE555 clock with a potentiometer for speed (about 0.65 to 6.9 steps per second)','AUTO or MANUAL stepping selected by a 74LS00 NAND circuit, plus HOLD and RESET controls','RING/JOHN switch shows the difference between a ring counter and a Johnson counter','74LS161 shows the step number in binary, and a third NE555 plays a tone that changes pitch as the lights move','Built on four 830-point breadboards, powered by a 5 V phone charger'],
@@ -540,13 +540,13 @@ const G=[
   {big:0,src:'img/cert-speaker.jpg',date:'Sep 29, 2026',t:'Think. Prompt. Automate: The Future of AI Workflows',s:'Resource Speaker · UBCOMPESA · UB IMC',badge:'Resource Speaker'},
   {src:'img/cert-appdev.jpg',date:'Jan 30, 2026',t:'Basic Introduction to App Development: Web, Laravel and Android Studio',s:'Speaker · COMPESA · UB IMC · “Build it. Style it. Launch it.”',badge:'Speaker'}]},
  {name:'Seminars & trainings',cls:'two',items:[
-  {src:'img/cert-metawatt.jpg',date:'Nov 9, 2026',t:'METAWATT Student Orientation and Exploratory Session',s:'AI, AI development and automation · COMPESA · UB IRC'},
+  {src:'cert-metawatt.jpg',date:'Nov 9, 2026',t:'METAWATT Student Orientation and Exploratory Session',s:'AI, AI development and automation · COMPESA · UB IRC'},
   {src:'img/cert-webinar.jpg',date:'May 2, 2026',t:'Low-Level Control: Programming Arduino Using Assembly',s:'Webinar · COMPESA'},
   {src:'img/cert-sumoworkshop.jpg',date:'Mar 29, 2025',t:'Sumobot Workshop: Code, Create, Compete',s:'Seminar · COMPESA · UB IMC'},
-  {src:'img/cert-pcb.jpg',date:'Feb 22, 2025',t:'PCB Design Seminar Workshop',s:'Seminar · COMPESA · UB IRC'}]},
+  {src:'cert-pcb.jpg',date:'Feb 22, 2025',t:'PCB Design Seminar Workshop',s:'Seminar · COMPESA · UB IRC'}]},
  {name:'Attendance Committee',cls:'two',items:[
   {src:'img/cert-pagagak.jpg',date:'Sep 2, 2026',t:'Guidance Celebration: PAG-AGAK',s:'EVLAUNCH Attendance System · UBSSG'},
-  {src:'img/cert-himamat.jpg',date:'Aug 20, 2026',t:'HIMAMAT 2026',s:'EVLAUNCH Attendance System · UBSSG · VBT Jr. Sports Complex'},
+  {src:'cert-himamat.jpg',date:'Aug 20, 2026',t:'HIMAMAT 2026',s:'EVLAUNCH Attendance System · UBSSG · VBT Jr. Sports Complex'},
   {src:'img/cert-timbaya.jpg',date:'Aug 8, 2026',t:'Timbaya Festival: Welcome Week',s:'Managed and monitored attendance · UBSSG'},
   {src:'img/cert-teachers.jpg',date:'Oct 3, 2025',t:'Teachers Day 2025 Celebration',s:'Attendance Committee · UBSSG · UB Quadrangle'}]},
  {name:'Competitions & events',cls:'two',items:[
